@@ -16,7 +16,7 @@ function init()
 
 	game_over=false;
 
-	food= getRandomFood();
+	
 
 
 	snake ={
@@ -30,6 +30,15 @@ function init()
 			{
 				this.cells.push({x:i,y:0});
 			}
+		},
+		check: function(food) 
+		{
+			for(var i=0;i<this.cells.length;i++)
+			{
+				if(food.x==this.cells[i].x && food.y==this.cells[i].y)
+					return true;
+			}
+			return false;
 		},
 		drawSnake:function()
 		{
@@ -92,6 +101,7 @@ function init()
 			}
 		},
 	}; 
+	food= getRandomFood();
 
 	snake.createSnake();
 
@@ -154,13 +164,10 @@ function getRandomFood()
 		y:foodY,
 		color:"red",
 	}
-	/*for(int i=0;i<snake.cells.length;i++)
+	if(snake.check(food))
 	{
-		if(foodY==snake.cells[i].y && foodX==snake.cells[i].x)
-		{
-			return getRandomFood();
-		}
-	}*/
+		return getRandomFood();
+	}
 	return food; 
 }
 
