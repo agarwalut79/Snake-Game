@@ -177,7 +177,10 @@ function gameloop()
 	{
 		clearInterval(f);
 		alert("Game over"); 
-		return;
+		//if(alert('Alert For your User!')){}
+		//else   
+		 window.location.reload();
+		r//eturn;
 	}
 	draw();
 	update();
